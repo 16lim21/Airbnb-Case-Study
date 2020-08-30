@@ -94,9 +94,6 @@ def main():
     conn = sqlite3.connect('./Data/airbnb.db')
     c = conn.cursor()
 
-    #These should be neighbourhoods not towns
-    towns = towns_from_db(c)
-
     print(f"Welcome to the AirBnb data for NYC. There are {len(towns)} registered neighbourhoods in NYC")
 
     validAnswer = True
@@ -120,6 +117,9 @@ def main():
             townDicts = json.load(fp)
     
     elif user == 'no':
+        
+        #These should be neighbourhoods not towns
+        towns = towns_from_db(c)
         
         print("Before we begin, how many adjectives do you want to search for in every neighbourhood? " + 
             "Please give an integer answer. If you want to look through all adjectives, type all \n")
